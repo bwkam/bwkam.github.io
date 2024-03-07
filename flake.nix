@@ -15,7 +15,7 @@
       perSystem = { config, self', pkgs, lib, system, ... }:
         let
           cargoToml = builtins.fromTOML (builtins.readFile ./Cargo.toml);
-          nonRustDeps = [ pkgs.libiconv ];
+          nonRustDeps = with pkgs; [ libiconv clippy ];
           rust-toolchain = pkgs.symlinkJoin {
             name = "rust-toolchain";
             paths = [
