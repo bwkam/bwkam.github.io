@@ -11,6 +11,6 @@ axum = { version = "0.7.4", features = ["tracing"] }
 maud = { version = "0.26.0", features = ["axum"] }
 tokio = { version = "1.36.0", features = ["full"] }
 tower = "0.4.13"
-tower-http = { version = "0.5.2", features = ["trace", "fs"] }
+tower-http = { version = "0.5.2", features = ["trace", "fs", "cors"] }
 tracing = "0.1.40"
 tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
