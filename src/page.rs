@@ -19,7 +19,7 @@ fn head(title: &str) -> Markup {
                meta name="viewport" content="width=device-width, initial-scale=1.0";
                title { (title) }
                // tailwind
-               link href="/_assets/css/output.css" rel="stylesheet";
+               link href="/assets/css/output.css" rel="stylesheet";
            }
        }
 }
@@ -28,7 +28,7 @@ fn body(content: Markup) -> Markup {
     html! {
         body ."bg-base" {
             (content)
-            script src="/_assets/js/htmx.min.js" {}
+            script src="/assets/js/htmx.min.js" {}
         }
     }
 }

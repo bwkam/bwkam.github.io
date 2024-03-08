@@ -9,7 +9,10 @@ use axum::{
     Router,
 };
 use error::Result;
-use tower_http::cors::CorsLayer;
+use tower_http::{
+    cors::CorsLayer,
+    services::{ServeDir, ServeFile},
+};
 
 mod error;
 mod page;
@@ -20,11 +23,15 @@ async fn main() -> Result<()> {
     // for logging
     tracing_subscriber::fmt::init();
 
+    // static files
+    let serve_dir = ServeDir::new("assets").not_found_service(ServeFile::new("assets/index.html"));
+
     // init our app
     let app = Router::new()
         .route("/", get(routes::index::index))
         .route("/hello", get(hello))
-        .route("/_assets/*path", get(assets))
+        .nest_service("/assets", serve_dir.clone())
+        .fallback_service(serve_dir)
         .layer(
             CorsLayer::new()
                 .allow_origin("*".parse::<HeaderValue>().unwrap())
@@ -39,25 +46,6 @@ async fn main() -> Result<()> {
     Ok(())
 }
 
-async fn assets(Path(path): Path<String>) -> impl IntoResponse {
-    let mut headers = HeaderMap::new();
-    let content = tokio::fs::read_to_string(format!("./assets/{}", path)).await;
-
-    match content {
-        Ok(content) => {
-            if path.ends_with(".css") {
-                headers.insert(header::CONTENT_TYPE, "text/css".parse().unwrap());
-            } else if path.ends_with(".js") {
-                headers.insert(header::CONTENT_TYPE, "text/javascript".parse().unwrap());
-            } else if path.ends_with(".svg") {
-                headers.insert(header::CONTENT_TYPE, "image/svg+xml".parse().unwrap());
-            }
-
-            (StatusCode::OK, headers, content)
-        }
-        Err(_) => (StatusCode::NOT_FOUND, headers, "".to_string()),
-    }
-}
 async fn hello() -> impl IntoResponse {
     "hello world"
 }
