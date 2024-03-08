@@ -1,4 +1,4 @@
-use maud::{html, Markup, PreEscaped, DOCTYPE};
+use maud::{html, Markup, DOCTYPE};
 
 // html boilerplate
 pub fn page(title: &str, content: Markup) -> Markup {
@@ -19,7 +19,7 @@ fn head(title: &str) -> Markup {
                meta name="viewport" content="width=device-width, initial-scale=1.0";
                title { (title) }
                // tailwind
-               style { (PreEscaped(include_str!(concat!(env!("OUT_DIR"), "/output.css")))) }
+               link href="/_assets/css/output.css" rel="stylesheet";
            }
        }
 }

@@ -9,23 +9,20 @@ use axum::{
     Router,
 };
 use error::Result;
-use maud::{html, Markup};
 use tower_http::cors::CorsLayer;
 
 mod error;
 mod page;
+mod routes;
 
 #[tokio::main]
 async fn main() -> Result<()> {
     // for logging
     tracing_subscriber::fmt::init();
 
-    let output = format!("{}/output.css", std::env::var("OUT_DIR").unwrap());
-    println!("{:?}", output);
-
     // init our app
     let app = Router::new()
-        .route("/", get(index))
+        .route("/", get(routes::index::index))
         .route("/hello", get(hello))
         .route("/_assets/*path", get(assets))
         .layer(
@@ -60,18 +57,7 @@ async fn assets(Path(path): Path<String>) -> impl IntoResponse {
         }
         Err(_) => (StatusCode::NOT_FOUND, headers, "".to_string()),
     }
-} // routes
-async fn index() -> Markup {
-    let content = html! {
-        button
-            type="button" hx-get="/hello" hx-swap="outerHTML"
-            ."bg-red-300"
-            { "Click me" }
-    };
-
-    page::page("home", content)
 }
-
 async fn hello() -> impl IntoResponse {
-    "hello world"
+    "hello world please"
 }

@@ -37,8 +37,8 @@
           # Rust dev environment
           devShells.default = pkgs.mkShell {
             # env vars
-            OUT_DIR = "assets/css";
             RUST_LOG = "info";
+            RUST_BACKTRACE = 1;
 
             inputsFrom = [ config.treefmt.build.devShell ];
             shellHook = ''
@@ -51,7 +51,6 @@
             '';
             buildInputs = nonRustDeps;
             nativeBuildInputs = with pkgs; [ just rust-toolchain tailwindcss ];
-            RUST_BACKTRACE = 1;
           };
 
           # Add your auto-formatters here.
