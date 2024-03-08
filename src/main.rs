@@ -59,5 +59,5 @@ async fn assets(Path(path): Path<String>) -> impl IntoResponse {
     }
 }
 async fn hello() -> impl IntoResponse {
-    "hello world please"
+    "hello world"
 }

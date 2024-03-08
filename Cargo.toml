@@ -8,7 +8,6 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0.80"
 axum = { version = "0.7.4", features = ["tracing"] }
-catppuccin = "2.0.0"
 maud = { version = "0.26.0", features = ["axum"] }
 tokio = { version = "1.36.0", features = ["full"] }
 tower = "0.4.13"

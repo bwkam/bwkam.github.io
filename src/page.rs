@@ -26,7 +26,7 @@ fn head(title: &str) -> Markup {
 
 fn body(content: Markup) -> Markup {
     html! {
-        body {
+        body ."bg-base" {
             (content)
             script src="/_assets/js/htmx.min.js" {}
         }
