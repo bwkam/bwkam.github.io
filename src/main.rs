@@ -11,7 +11,6 @@ use axum::{
 use error::Result;
 use maud::{html, Markup};
 use tower_http::cors::CorsLayer;
-use tracing::{debug, info};
 
 mod error;
 mod page;
@@ -23,8 +22,6 @@ async fn main() -> Result<()> {
 
     let output = format!("{}/output.css", std::env::var("OUT_DIR").unwrap());
     println!("{:?}", output);
-
-    info!("hey");
 
     // init our app
     let app = Router::new()
@@ -69,7 +66,7 @@ async fn index() -> Markup {
         button
             type="button" hx-get="/hello" hx-swap="outerHTML"
             ."bg-red-300"
-            { "Click meeee" }
+            { "Click me" }
     };
 
     page::page("home", content)
