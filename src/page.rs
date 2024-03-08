@@ -1,4 +1,4 @@
-use maud::{html, Markup, DOCTYPE};
+use maud::{html, Markup, PreEscaped, DOCTYPE};
 
 // html boilerplate
 pub fn page(title: &str, content: Markup) -> Markup {
@@ -13,13 +13,15 @@ pub fn page(title: &str, content: Markup) -> Markup {
 
 fn head(title: &str) -> Markup {
     html! {
-        head {
-            // metadata
-            meta charset="UTF-8";
-            meta name="viewport" content="width=device-width, initial-scale=1.0";
-            title { (title) }
-        }
-    }
+           head {
+               // metadata
+               meta charset="UTF-8";
+               meta name="viewport" content="width=device-width, initial-scale=1.0";
+               // tailwind
+               style { "/_assets/css/output.css" }
+               title { (title) }
+           }
+       }
 }
 
 fn body(content: Markup) -> Markup {

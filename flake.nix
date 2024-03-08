@@ -36,6 +36,10 @@
 
           # Rust dev environment
           devShells.default = pkgs.mkShell {
+            # env vars
+            OUT_DIR = "./assets/css/";
+            RUST_LOG = "info";
+
             inputsFrom = [ config.treefmt.build.devShell ];
             shellHook = ''
               # For rust-analyzer 'hover' tooltips to work.
@@ -46,7 +50,7 @@
               just
             '';
             buildInputs = nonRustDeps;
-            nativeBuildInputs = with pkgs; [ just rust-toolchain ];
+            nativeBuildInputs = with pkgs; [ just rust-toolchain tailwindcss ];
             RUST_BACKTRACE = 1;
           };
 

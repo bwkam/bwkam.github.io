@@ -19,9 +19,6 @@ mod page;
 #[tokio::main]
 async fn main() -> Result<()> {
     // for logging
-    if std::env::var_os("RUST_LOG").is_none() {
-        std::env::set_var("RUST_LOG", "website=info");
-    }
     tracing_subscriber::fmt::init();
 
     info!("hey");
@@ -67,7 +64,10 @@ async fn assets(Path(path): Path<String>) -> impl IntoResponse {
 } // routes
 async fn index() -> Markup {
     let content = html! {
-        button type="button" hx-get="/hello" hx-swap="outerHTML" { "Click me" }
+        button 
+            type="button" hx-get="/hello" hx-swap="outerHTML" 
+            ."px-10" 
+            { "Click me" }
     };
 
     page::page("home", content)
