@@ -1,14 +1,10 @@
 // https://github.com/grantshandy/htmxchat/blob/main/build.rs
 
-use std::{env, process::Command};
+use std::process::Command;
 
 fn main() {
-    println!("cargo:rerun-if-changed=./src/main.rs");
-
-    let tailwind_cmd = format!(
-        "tailwindcss --minify -i src/input.css -o {}/output.css",
-        env::var("OUT_DIR").unwrap()
-    );
+    // TODO: will probably need to add more paths
+    println!("cargo:rerun-if-changed=./src");
 
     let output = format!("{}/output.css", std::env::var("OUT_DIR").unwrap());
 
@@ -18,6 +14,4 @@ fn main() {
         .args(["-o", output.as_str()])
         .status()
         .expect("error running tailwind");
-
-    Command::new("touch").arg("women").status().expect("err");
 }
