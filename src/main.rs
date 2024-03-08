@@ -1,6 +1,7 @@
 use axum::{
     http::{
-        header::{ACCEPT, AUTHORIZATION, CONTENT_TYPE, LAST_MODIFIED}, HeaderValue, Method,
+        header::{ACCEPT, AUTHORIZATION, CONTENT_TYPE, LAST_MODIFIED},
+        HeaderValue, Method,
     },
     response::IntoResponse,
     routing::get,
@@ -45,5 +46,5 @@ async fn main() -> Result<()> {
 }
 
 async fn hello() -> impl IntoResponse {
-    "hello world"
+    "hello worldd"
 }

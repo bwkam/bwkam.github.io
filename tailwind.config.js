@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.rs"],
   theme: {
     extend: {},
+    fontFamily: {
+      garamond: ["EB Garamond", "serif"]
+    }
   },
   plugins: [
     require("@catppuccin/tailwindcss")({
