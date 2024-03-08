@@ -21,6 +21,9 @@ async fn main() -> Result<()> {
     // for logging
     tracing_subscriber::fmt::init();
 
+    let output = format!("{}/output.css", std::env::var("OUT_DIR").unwrap());
+    println!("{:?}", output);
+
     info!("hey");
 
     // init our app
@@ -34,7 +37,6 @@ async fn main() -> Result<()> {
                 .allow_methods([Method::GET])
                 .allow_headers([AUTHORIZATION, ACCEPT, CONTENT_TYPE, LAST_MODIFIED]),
         );
-
 
     // serve
     let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
@@ -64,10 +66,10 @@ async fn assets(Path(path): Path<String>) -> impl IntoResponse {
 } // routes
 async fn index() -> Markup {
     let content = html! {
-        button 
-            type="button" hx-get="/hello" hx-swap="outerHTML" 
-            ."px-10" 
-            { "Click me" }
+        button
+            type="button" hx-get="/hello" hx-swap="outerHTML"
+            ."bg-red-300"
+            { "Click meeee" }
     };
 
     page::page("home", content)

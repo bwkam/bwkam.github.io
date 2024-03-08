@@ -17,9 +17,9 @@ fn head(title: &str) -> Markup {
                // metadata
                meta charset="UTF-8";
                meta name="viewport" content="width=device-width, initial-scale=1.0";
-               // tailwind
-               style { "/_assets/css/output.css" }
                title { (title) }
+               // tailwind
+               style { (PreEscaped(include_str!(concat!(env!("OUT_DIR"), "/output.css")))) }
            }
        }
 }

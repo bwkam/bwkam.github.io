@@ -37,7 +37,7 @@
           # Rust dev environment
           devShells.default = pkgs.mkShell {
             # env vars
-            OUT_DIR = "./assets/css/";
+            OUT_DIR = "assets/css";
             RUST_LOG = "info";
 
             inputsFrom = [ config.treefmt.build.devShell ];
