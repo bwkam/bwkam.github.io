@@ -1,4 +1,3 @@
-use anyhow::{bail, Context, Error};
 use axum::{
     extract::Path,
     http::{
@@ -10,24 +9,27 @@ use axum::{
     Router,
 };
 use error::Result;
-use maud::{html, Markup, DOCTYPE};
+use maud::{html, Markup};
 use tower_http::cors::CorsLayer;
-use tracing::info;
+use tracing::{debug, info};
 
 mod error;
+mod page;
 
 #[tokio::main]
 async fn main() -> Result<()> {
     // for logging
-    let subscriber = tracing_subscriber::FmtSubscriber::new();
-    tracing::subscriber::set_global_default(subscriber)
-        .context("error setting global default subscriber")?;
+    if std::env::var_os("RUST_LOG").is_none() {
+        std::env::set_var("RUST_LOG", "website=info");
+    }
+    tracing_subscriber::fmt::init();
 
-    info!("initializing router...");
+    info!("hey");
 
     // init our app
     let app = Router::new()
         .route("/", get(index))
+        .route("/hello", get(hello))
         .route("/_assets/*path", get(assets))
         .layer(
             CorsLayer::new()
@@ -35,6 +37,7 @@ async fn main() -> Result<()> {
                 .allow_methods([Method::GET])
                 .allow_headers([AUTHORIZATION, ACCEPT, CONTENT_TYPE, LAST_MODIFIED]),
         );
+
 
     // serve
     let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
@@ -63,38 +66,13 @@ async fn assets(Path(path): Path<String>) -> impl IntoResponse {
     }
 } // routes
 async fn index() -> Markup {
-    html! {
-        h1 {"Hello World"}
-    }
+    let content = html! {
+        button type="button" hx-get="/hello" hx-swap="outerHTML" { "Click me" }
+    };
+
+    page::page("home", content)
 }
 
-// html boilerplate
-fn page(title: &str, content: Markup) -> Markup {
-    html! {
-        (DOCTYPE)
-        html lang="en" {
-            (head(title))
-            (body(content))
-        }
-    }
-}
-
-fn head(title: &str) -> Markup {
-    html! {
-        head {
-            // metadata
-            meta charset="UTF-8";
-            meta name="viewport" content="width=device-width, initial-scale=1.0";
-            title { (title) }
-        }
-    }
-}
-
-fn body(content: Markup) -> Markup {
-    html! {
-        body {
-            (content)
-            script src="/_assets/js/htmx.min.js" {}
-        }
-    }
+async fn hello() -> impl IntoResponse {
+    "hello world"
 }
