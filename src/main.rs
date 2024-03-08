@@ -1,8 +1,6 @@
 use axum::{
-    extract::Path,
     http::{
-        header::{self, ACCEPT, AUTHORIZATION, CONTENT_TYPE, LAST_MODIFIED},
-        HeaderMap, HeaderValue, Method, StatusCode,
+        header::{ACCEPT, AUTHORIZATION, CONTENT_TYPE, LAST_MODIFIED}, HeaderValue, Method,
     },
     response::IntoResponse,
     routing::get,
