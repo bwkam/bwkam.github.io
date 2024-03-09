@@ -15,7 +15,7 @@
       perSystem = { config, self', pkgs, lib, system, ... }:
         let
           cargoToml = builtins.fromTOML (builtins.readFile ./Cargo.toml);
-          nonRustDeps = with pkgs; [ libiconv clippy ];
+          nonRustDeps = with pkgs; [ libiconv clippy tailwindcss mold ];
           rust-toolchain = pkgs.symlinkJoin {
             name = "rust-toolchain";
             paths = [
@@ -35,7 +35,9 @@
           };
 
           # Rust dev environment
-          devShells.default = pkgs.mkShell {
+          devShells.default = pkgs.mkShell.override {
+            stdenv = pkgs.stdenvAdapters.useMoldLinker pkgs.clangStdenv;
+          } {
             # env vars
             RUST_LOG = "info";
             RUST_BACKTRACE = 1;
@@ -50,7 +52,7 @@
               just
             '';
             buildInputs = nonRustDeps;
-            nativeBuildInputs = with pkgs; [ just rust-toolchain tailwindcss ];
+            nativeBuildInputs = with pkgs; [ just rust-toolchain ];
           };
 
           # Add your auto-formatters here.

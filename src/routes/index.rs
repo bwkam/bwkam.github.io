@@ -1,14 +1,14 @@
-use maud::{html, Markup};
 use crate::page;
+use maud::{html, Markup};
 
 pub async fn index() -> Markup {
     let content = html! {
-        button
-            type="button" hx-get="/hello" hx-swap="outerHTML"
-            ."bg-red-100"
-            { "Click my buttons" }
-
-        h1 ."py-10 text-lg hover:text-sm" { "Yo" }
+        // content
+        div .flex.justify-center.w-full."mt-[50px]".flex-col.items-center {
+            h1 .text-5xl.text-white.font-extrabold {
+                "home"
+            }
+        }
     };
 
     page::page("home", content)

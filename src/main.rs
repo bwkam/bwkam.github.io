@@ -12,6 +12,7 @@ use tower_http::{
     cors::CorsLayer,
     services::{ServeDir, ServeFile},
 };
+use tower_livereload::LiveReloadLayer;
 
 mod error;
 mod page;
@@ -28,9 +29,11 @@ async fn main() -> Result<()> {
     // init our app
     let app = Router::new()
         .route("/", get(routes::index::index))
+        .route("/about", get(routes::about::index))
         .route("/hello", get(hello))
         .nest_service("/assets", serve_dir.clone())
         .fallback_service(serve_dir)
+        .layer(LiveReloadLayer::new())
         .layer(
             CorsLayer::new()
                 .allow_origin("*".parse::<HeaderValue>().unwrap())

@@ -4,5 +4,10 @@
 
 @font-face {
   font-family: "EB Garamond";
-  src: url("../assets/fonts/EBGaramond-Italic-VariableFont_wght.ttf");
+  src: url("/assets/fonts/EBGaramond-Italic-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Signika Negative";
+  src: url("/assets/fonts/SignikaNegative-VariableFont_wght.ttf");
 }

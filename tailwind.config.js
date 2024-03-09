@@ -4,8 +4,9 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      garamond: ["EB Garamond", "serif"]
-    }
+      eb_garamond: ["EB Garamond", "serif"],
+      signika_negative: ["Signika Negative", "sans-serif"],
+    },
   },
   plugins: [
     require("@catppuccin/tailwindcss")({
