@@ -1,6 +1,9 @@
 # The URL the site will be built for
 base_url = "https://bwkam.github.io"
 
+title = "bwkam"
+description = "beshoy kamel or bwkam's website"
+
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = false
 
