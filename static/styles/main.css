@@ -790,6 +790,10 @@ video {
   margin-bottom: 2.5rem;
 }
 
+.ml-10 {
+  margin-left: 2.5rem;
+}
+
 .ml-20 {
   margin-left: 5rem;
 }
@@ -800,14 +804,6 @@ video {
 
 .mt-10 {
   margin-top: 2.5rem;
-}
-
-.ml-3 {
-  margin-left: 0.75rem;
-}
-
-.ml-10 {
-  margin-left: 2.5rem;
 }
 
 .block {
@@ -836,10 +832,6 @@ video {
 
 .flex-row {
   flex-direction: row;
-}
-
-.flex-col {
-  flex-direction: column;
 }
 
 .justify-center {
