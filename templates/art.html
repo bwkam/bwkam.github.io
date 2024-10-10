@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block content %}
+<div class="flex flex-col justify-center items-center gap-3">
+  {% for asset in section.assets -%}
+    {%- if asset is matching("[.](jpg|png|jpeg)$") -%}
+        {% set image = resize_image(path=asset, width=480, height=720, op="fit") %}
+
+        <a href="{{ get_url(path=asset) }}" target="_blank">
+            <img src="{{ image.url }}" />
+        </a>
+    {%- endif %}
+  {%- endfor %}
+</div>
+{% endblock content %}
