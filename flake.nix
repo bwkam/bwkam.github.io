@@ -26,7 +26,7 @@
         };
       in {
         default = pkgs.mkShell {
-          buildInputs = with pkgs; [zola];
+          buildInputs = with pkgs; [zola tailwindcss autoprefixer nodePackages.postcss-cli];
         };
       }
     );

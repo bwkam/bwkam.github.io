@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block content %}
+<ul class="mt-10 ml-20">
+  <!-- If you arelusing pagination, section.pages will be empty.
+       You need to use the paginator object -->
+  {% for page in section.pages %}
+  <li>
+    <a class="text-gray-400 font-bold" href="{{ page.permalink | safe }}"
+      >{{ page.title }}</a
+    >
+    - <span class="underline">{{ page.taxonomies.tags }}</span>
+
+    <span class="text-sm color-grey font-light ml-10">// {{ page.date }}</span>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock content %}
