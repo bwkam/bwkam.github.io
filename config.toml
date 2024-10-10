@@ -13,7 +13,9 @@ taxonomies = [
 
 author = "bwkam"
 
-generate_feeds = true
+generate_rss = true
+generate_feed = true
+feed_filename = "atom.xml"
 
 [markdown]
 # Whether to do syntax highlighting
