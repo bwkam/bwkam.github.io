@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>bwkam</title>
+    <subtitle>beshoy kamel or bwkam&#x27;s website</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://bwkam.is-a.dev/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://bwkam.is-a.dev"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2024-10-10T00:00:00+00:00</updated>
+    <id>https://bwkam.is-a.dev/atom.xml</id>
+    <entry xml:lang="en">
+        <title>first post</title>
+        <published>2024-10-10T00:00:00+00:00</published>
+        <updated>2024-10-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              bwkam
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://bwkam.is-a.dev/blog/first/"/>
+        <id>https://bwkam.is-a.dev/blog/first/</id>
+        
+        <content type="html" xml:base="https://bwkam.is-a.dev/blog/first/">&lt;p&gt;hello this is my first post, and hopefully not the last one&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>what is life</title>
+        <published>2024-10-10T00:00:00+00:00</published>
+        <updated>2024-10-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              bwkam
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://bwkam.is-a.dev/blog/life/"/>
+        <id>https://bwkam.is-a.dev/blog/life/</id>
+        
+        <content type="html" xml:base="https://bwkam.is-a.dev/blog/life/">&lt;p&gt;you asked the wrong person&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>
