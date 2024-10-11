@@ -16,8 +16,8 @@ taxonomies = [
 
 author = "bwkam"
 
-generate_feeds = true
-feed_filenames = ["atom.xml"]
+# generate_feeds = true
+# feed_filenames = ["atom.xml"]
 
 [markdown]
 # Whether to do syntax highlighting
