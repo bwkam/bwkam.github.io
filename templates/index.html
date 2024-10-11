@@ -1,35 +1,50 @@
 {% extends "base.html" %} {% block content %}
 
 <main class="text-white flex-row justify-center max-w-5xl mx-auto h-full gap-3">
-  <p style="display: inline">
-    hello, I'm <strong>bwkam</strong> or <strong>rynite</strong>. welcome to my
-  </p>
-  <a href="https://github.com/bwkam/bwkam.github.io" target="_blank">website</a>
-  👋
+  <div class="flex justify-center items-center max-w-2xl gap-3">
+    <p style="display: inline">
+      hello, I'm <strong>bwkam</strong>. welcome to my website.
+    </p>
+    <ul class="flex justify-center items-center text-xl gap-3">
+      <li>
+        <a href="mailto:beshoykamel391@gmail.com">
+          <i class="fa-solid fa-square-envelope"></i>
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/bwkam" target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
 
   <br /><br />
 
   <div class="flex justify-around">
-    <div class="">
-      <strong>things I</strong>
-      <strong class="underline">like:</strong>
+    <div class="flex flex-col gap-2">
+      <em
+        ><strong>things I <u>like</u></strong></em
+      >
 
       <ul class="list-disc pl-4">
-        <li>dwm</li>
-        <li>haxe</li>
-        <li>haskell</li>
+        <li>dwm 🐱‍💻</li>
+        <li>haxe 🐔</li>
+        <li>λ</li>
         <li>juice wrld 🕊️</li>
         <li>nix(os) ❄️</li>
-        <li>emacs/nvim</li>
-        <li>simple web like this</li>
-        <li>graphics dev</li>
-        <li>reverse eng</li>
+        <li>emacs 🐘</li>
+        <li>simple web like this 🌐</li>
+        <li>graphics dev 🍄</li>
+        <li>reverse eng ↻</li>
         <li>writing songs 🎻</li>
       </ul>
     </div>
 
-    <div class="">
-      <strong>things I really <u>hate</u>:</strong>
+    <div class="flex flex-col gap-2">
+      <em
+        ><strong>things I <u>dislike</u>:</strong></em
+      >
 
       <ul class="list-disc pl-4">
         <li>school/education</li>
@@ -37,34 +52,17 @@
         <li>my ocd and god knows what else</li>
         <li>social media</li>
         <li>js frameworks</li>
+        <li>where im living</li>
+        <li>cocky react devs</li>
         <li>^ retarded people</li>
+        <li>french</li>
+        <li>timed tasks</li>
       </ul>
     </div>
   </div>
 
   <br />
-  <h2 class="font-bold">contact</h2>
-  <ul class="flex justify-between w-20 text-xl">
-    <li>
-      <a href="mailto:beshoykamel391@gmail.com">
-        <i class="fa-solid fa-square-envelope"></i>
-      </a>
-    </li>
-    <li>
-      <a href="https://github.com/bwkam" target="_blank">
-        <i class="fa-brands fa-square-github"></i>
-      </a>
-    </li>
-    <li>
-      <a
-        class="text-lg"
-        href="http://discordapp.com/users/891997325499719730"
-        target="_blank"
-      >
-        <i class="fa-brands fa-discord"></i>
-      </a>
-    </li>
-  </ul>
+  <!-- <h2 class="font-bold">contact</h2> -->
 </main>
 
 <footer
