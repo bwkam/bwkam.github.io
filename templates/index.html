@@ -1,23 +1,18 @@
 {% extends "base.html" %} {% block content %}
 
 <main class="text-white flex-row justify-center max-w-5xl mx-auto h-full gap-3">
-  <p>
-    blah blah blah idk how to greet people. see my
-    <a
-      class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
-      href="https://github.com/bwkam"
-      >gh</a
-    >. I also play the violin and draw (traditional). I'm not a very social
-    person, and tbh I have problems communicating my ideas effectively, whether
-    online or in person, tho I try my best. I barely talk to anyone. I'll host
-    my art and articles here too, but when I get the time.
+  <p style="display: inline">
+    hello, I'm <strong>bwkam</strong> or <strong>rynite</strong>. welcome to my
   </p>
+  <a href="https://github.com/bwkam/bwkam.github.io" target="_blank">website</a>
+  👋
 
   <br /><br />
 
   <div class="flex justify-around">
     <div class="">
-      <strong>things I like:</strong>
+      <strong>things I</strong>
+      <strong class="underline">like:</strong>
 
       <ul class="list-disc pl-4">
         <li>dwm</li>
@@ -38,9 +33,7 @@
 
       <ul class="list-disc pl-4">
         <li>school/education</li>
-        <li>me</li>
-        <li>everyone (except a very few)</li>
-        <li>colors</li>
+        <li>colors (as you can see)</li>
         <li>my ocd and god knows what else</li>
         <li>social media</li>
         <li>js frameworks</li>
@@ -51,25 +44,50 @@
 
   <br />
   <h2 class="font-bold">contact</h2>
-  <ul>
+  <ul class="flex justify-between w-20 text-xl">
+    <li>
+      <a href="mailto:beshoykamel391@gmail.com">
+        <i class="fa-solid fa-square-envelope"></i>
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/bwkam" target="_blank">
+        <i class="fa-brands fa-square-github"></i>
+      </a>
+    </li>
     <li>
       <a
-        class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
-        href="mailto:beshoykamel391@gmail.com"
-        >send an email</a
+        class="text-lg"
+        href="http://discordapp.com/users/891997325499719730"
+        target="_blank"
       >
+        <i class="fa-brands fa-discord"></i>
+      </a>
     </li>
-
-    <li>discord: rynitee</li>
   </ul>
 </main>
 
-<footer class="flex flex-col items-center justify-center w-full">
+<footer
+  class="flex flex-col items-center justify-center w-full absolute bottom-3 right-0"
+>
   <div class="flex gap-2 justify-center">
-    <a href="https://nixwebr.ing/prev/bwkam">prev</a>
+    <div>
+      <i class="fa-solid fa-angles-left"></i>
+      <a href="https://nixwebr.ing/prev/bwkam">prev</a>
+    </div>
     <a href="https://nixwebr.ing/rand">random</a>
-    <a href="https://nixwebr.ing/next/bwkam">next</a>
+    <div>
+      <a href="https://nixwebr.ing/next/bwkam">next</a>
+      <i class="fa-solid fa-angles-right"></i>
+    </div>
   </div>
-  <a class="text-blue-500 text-xs font-extrabold underline text-center w-full text-center" href="https://nixwebr.ing">nix webring ❄️</a>
+  <span>
+    <a
+      class="inline text-blue-500 text-xs font-extrabold underline decoration-dotted text-center w-full text-center"
+      href="https://nixwebr.ing"
+      >nix webring</a
+    >
+    <span>❄</span>
+  </span>
 </footer>
 {% endblock content %}

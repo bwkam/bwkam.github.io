@@ -8,20 +8,23 @@
       rel="stylesheet"
       type="text/css"
     />
+    <link href="{{ get_url(path='icons/css/fontawesome.css') }}" rel="stylesheet" />
+    <link href="{{ get_url(path='icons/css/brands.css') }}" rel="stylesheet" />
+    <link href="{{ get_url(path='icons/css/solid.css') }}" rel="stylesheet" />
   </head>
 
   <body class="text-white">
     <section class="section m-10">
       <div class="flex justify-between w-full mb-10">
-        <a href="{{ get_url(path='/') }}"> home </a>
+        <a class="underline" href="{{ get_url(path='/') }}"> home </a>
 
         <div class="mr-20 flex gap-5">
+          <a href="{{ get_url(path='atom.xml', trailing_slash=false) }}">
+            <i class="text-2xl fa-solid fa-square-rss"></i>
+          </a>
           <a href="{{ get_url(path='/art') }}"> art </a>
           <a href="{{ get_url(path='@/blog/_index.md') }}"> blog </a>
-          <a href="{{ get_url(path='/') }}"> code </a>
-          <a href="{{ get_url(path='atom.xml', trailing_slash=false) }}">
-            feed
-          </a>
+          <a href="https://github.com/bwkam/bwkam.github.io" target="_blank"> code </a>
         </div>
       </div>
       <div>{% block content %} {% endblock %}</div>
