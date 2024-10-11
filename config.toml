@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://bwkam.github.io"
+base_url = "https://bwkam.is-a.dev"
 
 title = "bwkam"
 description = "beshoy kamel or bwkam's website"
