@@ -93,3 +93,42 @@ class Foo a b | a -> b where
 that's it, now if you try the snippet earlier, haskell would complain, you would have to only keep one of them.
 think if `b` is some certain certain, it doesn't make sense for a state to be associated with different types.
 
+now let's see a more complicated example. the `megaparsec` library provides a function called `single`, it's type signature is:
+
+```hs
+single :: MonadParsec e s m => Token s -> m (Token s)
+```
+roughly, this means that `e` `s` and `m` are related through `MonadParsec`. that's the signature of the class
+
+```hs
+class (Stream s, MonadPlus m) => MonadParsec e s m | m -> e s where 
+   ...
+```
+
+you see there is a functional dep, which says "m determines e and s". yes so that means we only need to tell it about `m`, it will take care of `e` and `s`
+if we try evaluate `single '\n'`, we would get an ambiguity error, because we don't know `m`, so we don't know `s` which is the first argument of `single`.
+it tries to match `Char` (what we gave it) against what it knows i.e `Token s`. Nothing it can do abaout it. let's help it out and give it an explicit type
+
+note: it knows `Token s ~ Char`, but nothing about `s`
+
+```hs
+(single '\n') :: Parsec Void String Char
+```
+so because we know `Token s ~ Char` (hint from '\n'), we observe how haskell matches the types
+
+```hs
+m Char
+Parsec Void String Char
+```
+
+it sees that the `Char` is constant in both sides, so it attempts to match `m` with `Parsec Void String`, and it should work out.
+now we know `m ~ Parsec Void String`, remember when I said that's what we only need? yes, so because of the functional dependency, you can rest assured that
+there is only one instance of `MonadParsec` where `m ~ Parsec Void String`, which means there are only one `s` and `e` that can fit in here, and those are 
+the `Void` and `String`. So, ultimately haskell knows that we need the `MonadParsec Void String (ParsecT Void String Identity)`. And if we hoogle it up: 
+
+```hs
+ (Ord e, Stream s) => MonadParsec e s (ParsecT e s m)
+```
+
+we can see that there is indeed an instance with the types we employed.
+
