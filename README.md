@@ -1,4 +1,4 @@
-# my website
+# bwkam's personal website
 
 ## build 
 1. `nix develop .`
