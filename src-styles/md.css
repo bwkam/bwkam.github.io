@@ -1,11 +1,11 @@
 .markdown {
     @apply text-lg;
-    @apply font-serif;
+    /* @apply font-serif; */
 }
 
 /* Font class used for headers */
 .markdown-header {
-    @apply font-sans;
+    /* @apply font-sans; */
 }
 
 /* Base spacing between paragraph */

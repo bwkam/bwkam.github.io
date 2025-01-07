@@ -2,8 +2,11 @@
 module.exports = {
   content: ["./templates/*.html"],
   theme: {
-    extend: {},
-  },
+    extend: {
+	fontFamily: {
+	    dm: ["Dank Mono", "Consolas", "Courier New", "Courier", "monospace"]
+	},
+    },
   plugins: [],
 }
 
