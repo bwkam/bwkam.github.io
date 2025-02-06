@@ -28,5 +28,5 @@ properties from the lens of the analogy. At this point, your brain tries its bes
 regret knowing the analogy in first place, as its perhaps the easiest/fastest thought your brain recalls when it attempts to understand the real concept outside of its analogical form,
 and then you're forced to confront the unfortunate reality with no analogies to help you. I think they are like training wheels; you don't realize you can't ride a bicycle until you
 take them off. However, their usage in areas like literature and so, is fine for the majority of people I believe—except for some with cognitive disabilities who may struggle to
-comprehend them. I can also imagine metaphors being used to gate keep information or to secretively communicate. 
+comprehend them. I can also imagine metaphors being used to gate keep information or to secretively communicate.
 
