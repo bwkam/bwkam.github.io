@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bwkam</title>
+    <link
+      href="https://bwkam.github.io/styles/main.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://bwkam.github.io/icons/css/fontawesome.css"
+      rel="stylesheet"
+    />
+    <link href="https://bwkam.github.io/icons/css/brands.css" rel="stylesheet" />
+    <link href="https://bwkam.github.io/icons/css/solid.css" rel="stylesheet" />
+  </head>
+
+  <body class="text-white">
+    <section class="section m-10">
+      <div class="flex justify-between w-full mb-10">
+        <a class="underline" href="https://bwkam.github.io"> home </a>
+
+        <div class="mr-20 flex gap-5">
+          <a href="https://bwkam.github.io/atom.xml">
+            <i class="text-2xl fa-solid fa-square-rss"></i>
+          </a>
+          <a href="https://bwkam.github.io/art"> art </a>
+          <a href="https://bwkam.github.io/blog/"> blog </a>
+          <a href="" target="_blank"> projects </a>
+        </div>
+      </div>
+      <div>
+<div class="markdown max-w-4xl mx-auto">
+  <h1>My Haskell Notes</h1>
+  <p><strong>2024-10-26</strong></p>
+  
+    <nav>
+	<ul>
+	
+	    <li>
+	    <a href="https://bwkam.github.io/blog/haskell-bs/#type-ambiguity-with-multi-type-param-typeclasses">type ambiguity with multi type param typeclasses</a>
+	    
+	    </li>
+	
+	    <li>
+	    <a href="https://bwkam.github.io/blog/haskell-bs/#functional-deps">functional deps</a>
+	    
+	    </li>
+	
+	</ul>
+    </nav>
+  
+  <h2 id="type-ambiguity-with-multi-type-param-typeclasses">type ambiguity with multi type param typeclasses</h2>
+<p>when we introduce multiple params to typeclasses, haskell is more likely to raise "ambiguity" errors.
+consider the following example:</p>
+<pre data-lang="hs" style="background-color:#2b303b;color:#c0c5ce;" class="language-hs "><code class="language-hs" data-lang="hs"><span style="color:#b48ead;">class </span><span style="color:#a3be8c;">Foo </span><span style="color:#bf616a;">a b </span><span style="color:#b48ead;">where
+</span><span>  </span><span style="color:#8fa1b3;">get </span><span style="color:#b48ead;">:: </span><span style="color:#bf616a;">a </span><span style="color:#b48ead;">-&gt; </span><span style="color:#bf616a;">b
+</span><span>
+</span><span style="color:#b48ead;">instance Foo Int</span><span> [</span><span style="color:#b48ead;">Int</span><span>] </span><span style="color:#b48ead;">where
+</span><span>  get x = </span><span style="color:#d08770;">[]
+</span><span>
+</span><span style="color:#b48ead;">instance Foo Int String where
+</span><span>  get x = </span><span style="color:#d08770;">[]
+</span><span>
+</span><span style="color:#8fa1b3;">foo </span><span style="color:#b48ead;">::</span><span> (</span><span style="color:#b48ead;">Foo </span><span style="color:#bf616a;">a b</span><span>) </span><span style="color:#b48ead;">=&gt; </span><span style="color:#bf616a;">a </span><span style="color:#b48ead;">-&gt; </span><span style="color:#bf616a;">b
+</span><span>foo a = get a
+</span></code></pre>
+<p>now if want to invoke call</p>
+<pre data-lang="hs" style="background-color:#2b303b;color:#c0c5ce;" class="language-hs "><code class="language-hs" data-lang="hs"><span>foo </span><span style="color:#d08770;">2
+</span></code></pre>
+<p>we get the following error:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>• Could not deduce ‘Foo a0 b’
+</span><span>    from the context: (Foo a b, Num a)
+</span><span>    bound by the inferred type for ‘it’:
+</span><span>                forall {a} {b}. (Foo a b, Num a) =&gt; b
+</span><span>    at &lt;interactive&gt;:1:1-5
+</span><span>    The type variable ‘a0’ is ambiguous
+</span><span>    Potentially matching instances:
+</span><span>    instance [safe] Foo Int [Int] -- Defined at app/Main.hs:22:10
+</span><span>    instance [safe] Foo String Int -- Defined at app/Main.hs:25:10
+</span><span>• In the ambiguity check for the inferred type for ‘it’
+</span><span>    To defer the ambiguity check to use sites, enable AllowAmbiguousTypes
+</span><span>    When checking the inferred type
+</span><span>    it :: forall {a} {b}. (Foo a b, Num a) =&gt; b
+</span></code></pre>
+<p>this happens because when you call <code>foo 2</code>, haskell tries to resolve <code>Foo a b</code>, which I believe happens before the function
+is actually evaluted, so it has solid types to operate on. so it sees <code>a</code> in <code>get :: a -&gt; b</code>, and it knows its <code>Int</code> or
+something.
+nah dumbass! <code>a</code> is still not a solid type, haskell just puts a <code>Num</code> constraint on it, and that's what it only knows. So both <code>a</code> and <code>b</code> are ambigious. let's be more explicit here</p>
+<pre data-lang="hs" style="background-color:#2b303b;color:#c0c5ce;" class="language-hs "><code class="language-hs" data-lang="hs"><span>foo (</span><span style="color:#d08770;">2 </span><span>:: </span><span style="color:#d08770;">Int</span><span>)
+</span></code></pre>
+<p>Then haskell looks for a <code>Foo Int b</code> instance, do we have one? No. So haskell is confused about which instance of
+<code>Foo a b</code> you actually want to use, which the error message helpfully provides for you. To fix such an error, you have to be
+more explicit about the type. i.e</p>
+<pre data-lang="hs" style="background-color:#2b303b;color:#c0c5ce;" class="language-hs "><code class="language-hs" data-lang="hs"><span>(foo (</span><span style="color:#d08770;">2 </span><span>:: </span><span style="color:#d08770;">Int</span><span>) :: [</span><span style="color:#d08770;">Int</span><span>])
+</span></code></pre>
+<p>tada, now haskell knows that you meant the <code>Foo Int [Int]</code> instance</p>
+<h2 id="functional-deps">functional deps</h2>
+<p>with the multi type param extensions, you sometimes want one type to decide the other. e.g</p>
+<pre data-lang="hs" style="background-color:#2b303b;color:#c0c5ce;" class="language-hs "><code class="language-hs" data-lang="hs"><span style="color:#b48ead;">class </span><span style="color:#a3be8c;">Foo </span><span style="color:#bf616a;">a b </span><span style="color:#b48ead;">where
+</span><span>  </span><span style="color:#8fa1b3;">get </span><span style="color:#b48ead;">:: </span><span style="color:#bf616a;">a </span><span style="color:#b48ead;">-&gt; </span><span style="color:#bf616a;">b
+</span></code></pre>
+<p>this means we can do stuff like</p>
+<pre data-lang="hs" style="background-color:#2b303b;color:#c0c5ce;" class="language-hs "><code class="language-hs" data-lang="hs"><span style="color:#b48ead;">instance Foo Int M
+</span><span>  ... 
+</span><span>  
+</span><span style="color:#b48ead;">instance Foo String M
+</span><span>  ...
+</span></code></pre>
+<p>this is fine, but sometimes it isn't desirable. we don't want multiple <code>b</code>s for one <code>a</code>. we only want 1:1
+so how do we communicate this to haskell? functional deps.
+(enable the ext)</p>
+<pre data-lang="hs" style="background-color:#2b303b;color:#c0c5ce;" class="language-hs "><code class="language-hs" data-lang="hs"><span style="color:#b48ead;">class </span><span style="color:#a3be8c;">Foo </span><span style="color:#bf616a;">a b</span><span> | </span><span style="color:#bf616a;">a</span><span> -&gt; </span><span style="color:#bf616a;">b </span><span style="color:#b48ead;">where
+</span><span>  </span><span style="color:#8fa1b3;">get </span><span style="color:#b48ead;">:: </span><span style="color:#bf616a;">a </span><span style="color:#b48ead;">-&gt; </span><span style="color:#bf616a;">b
+</span></code></pre>
+<p>that's it, now if you try the snippet earlier, haskell would complain, you would have to only keep one of them.
+think if <code>b</code> is some certain certain, it doesn't make sense for a state to be associated with different types.</p>
+<p>now let's see a more complicated example. the <code>megaparsec</code> library provides a function called <code>single</code>, it's type signature is:</p>
+<pre data-lang="hs" style="background-color:#2b303b;color:#c0c5ce;" class="language-hs "><code class="language-hs" data-lang="hs"><span style="color:#8fa1b3;">single </span><span style="color:#b48ead;">:: MonadParsec </span><span style="color:#bf616a;">e s m </span><span style="color:#b48ead;">=&gt; Token </span><span style="color:#bf616a;">s </span><span style="color:#b48ead;">-&gt; </span><span style="color:#bf616a;">m</span><span> (</span><span style="color:#b48ead;">Token </span><span style="color:#bf616a;">s</span><span>)
+</span></code></pre>
+<p>roughly, this means that <code>e</code> <code>s</code> and <code>m</code> are related through <code>MonadParsec</code>. that's the signature of the class</p>
+<pre data-lang="hs" style="background-color:#2b303b;color:#c0c5ce;" class="language-hs "><code class="language-hs" data-lang="hs"><span style="color:#b48ead;">class</span><span> (</span><span style="color:#a3be8c;">Stream </span><span style="color:#bf616a;">s</span><span>, </span><span style="color:#a3be8c;">MonadPlus </span><span style="color:#bf616a;">m</span><span>) =&gt; </span><span style="color:#a3be8c;">MonadParsec </span><span style="color:#bf616a;">e s m</span><span> | </span><span style="color:#bf616a;">m</span><span> -&gt; </span><span style="color:#bf616a;">e s </span><span style="color:#b48ead;">where 
+</span><span>   ...
+</span></code></pre>
+<p>you see there is a functional dep, which says "m determines e and s". yes so that means we only need to tell it about <code>m</code>, it will take care of <code>e</code> and <code>s</code>
+if we try evaluate <code>single '\n'</code>, we would get an ambiguity error, because we don't know <code>m</code>, so we don't know <code>s</code> which is the first argument of <code>single</code>.
+it tries to match <code>Char</code> (what we gave it) against what it knows i.e <code>Token s</code>. Nothing it can do abaout it. let's help it out and give it an explicit type</p>
+<p>note: it knows <code>Token s ~ Char</code>, but nothing about <code>s</code></p>
+<pre data-lang="hs" style="background-color:#2b303b;color:#c0c5ce;" class="language-hs "><code class="language-hs" data-lang="hs"><span>(single &#39;</span><span style="color:#96b5b4;">\n</span><span>&#39;) :: </span><span style="color:#d08770;">Parsec Void String Char
+</span></code></pre>
+<p>so because we know <code>Token s ~ Char</code> (hint from '\n'), we observe how haskell matches the types</p>
+<pre data-lang="hs" style="background-color:#2b303b;color:#c0c5ce;" class="language-hs "><code class="language-hs" data-lang="hs"><span>m </span><span style="color:#d08770;">Char
+</span><span style="color:#d08770;">Parsec Void String Char
+</span></code></pre>
+<p>it sees that the <code>Char</code> is constant in both sides, so it attempts to match <code>m</code> with <code>Parsec Void String</code>, and it should work out.
+now we know <code>m ~ Parsec Void String</code>, remember when I said that's what we only need? yes, so because of the functional dependency, you can rest assured that
+there is only one instance of <code>MonadParsec</code> where <code>m ~ Parsec Void String</code>, which means there are only one <code>s</code> and <code>e</code> that can fit in here, and those are
+the <code>Void</code> and <code>String</code>. So, ultimately haskell knows that we need the <code>MonadParsec Void String (ParsecT Void String Identity)</code>. And if we hoogle it up:</p>
+<pre data-lang="hs" style="background-color:#2b303b;color:#c0c5ce;" class="language-hs "><code class="language-hs" data-lang="hs"><span> (</span><span style="color:#d08770;">Ord</span><span> e, </span><span style="color:#d08770;">Stream</span><span> s) =&gt; </span><span style="color:#d08770;">MonadParsec</span><span> e s (</span><span style="color:#d08770;">ParsecT</span><span> e s m)
+</span></code></pre>
+<p>we can see that there is indeed an instance with the types we employed.</p>
+ </div>
+    </section>
+  </body>
+
+  <style>
+    /* @import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"); */
+
+    @font-face {
+	font-family: 'Dank Mono';
+	src: url('/fonts/DankMono-Regular.otf');
+	/* font-weight: 400; /\* Regular weight *\/ */
+	/* font-style: normal; */
+    }
+
+    /* @font-face { */
+    /* 	font-family: 'Dank Mono'; */
+    /* 	src: url('fonts/DankMono-Bold.otf'); */
+    /* 	font-weight: 700; /\* Bold weight *\/ */
+    /* 	font-style: normal; */
+    /* } */
+
+    @font-face {
+	font-family: 'Dank Mono';
+	src: url('/fonts/DankMono-Italic.otf');
+	font-style: italic;
+    }
+
+
+    * {
+      background-color: black;
+      font-family: 'Dank Mono', Consolas, 'Courier New', Courier, monospace;
+      /* font-family: "Fira Sans", serif; */
+    }
+  </style>
+</html>

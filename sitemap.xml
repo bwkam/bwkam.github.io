@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://bwkam.github.io/</loc>
+    </url>
+    <url>
+        <loc>https://bwkam.github.io/art/</loc>
+    </url>
+    <url>
+        <loc>https://bwkam.github.io/blog/</loc>
+    </url>
+    <url>
+        <loc>https://bwkam.github.io/blog/figlang/</loc>
+        <lastmod>2025-02-06</lastmod>
+    </url>
+    <url>
+        <loc>https://bwkam.github.io/blog/haskell-bs/</loc>
+        <lastmod>2024-10-26</lastmod>
+    </url>
+</urlset>

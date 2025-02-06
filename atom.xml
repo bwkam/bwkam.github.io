@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>bwkam</title>
+    <subtitle>beshoy kamel or bwkam&#x27;s website</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://bwkam.github.io/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://bwkam.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-02-06T00:00:00+00:00</updated>
+    <id>https://bwkam.github.io/atom.xml</id>
+    <entry xml:lang="en">
+        <title>The Power of Figurative Language</title>
+        <published>2025-02-06T00:00:00+00:00</published>
+        <updated>2025-02-06T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              bwkam
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://bwkam.github.io/blog/figlang/"/>
+        <id>https://bwkam.github.io/blog/figlang/</id>
+        
+        <content type="html" xml:base="https://bwkam.github.io/blog/figlang/">&lt;p&gt;I think they are an efficient and concise way to get your point across. A sentence like &quot;Jack is hungry&quot; is brief which normally implies that the meaning it carries is also shallow and
+unspecific. But, similes and metaphors create an exception to this norm about brief sentences. When you change it to &quot;Jack is hungry as a wolf&quot;, it&#x27;s still brief, but the simile has
+added dimensionality and depth to the meaning. That is, the pairing simile has upgraded the definition of &quot;hungry&quot; and equipped it with a few layers of depth without having to use or
+look for a more complicated word that nails down the specific variant you intended to convey with the original phrase. You could&#x27;ve also used an intensifier like &quot;very&quot; to modify this
+degree of meaning. But, in my opinion, a simile or metaphor is stronger. They&#x27;re efficient because to exactly describe how Jack is hungry, you could say &quot;Jack is so hungry that he
+could eat tons of meat, and he&#x27;s so furious&quot;. This has the problem of being lengthy, and possibly lacks a few more descriptions to conceive the desired imagery in your head. Eating
+lots of meat, and being furious are qualities that a wolf possess—well, stereotypically—so, the sentence could easily be reworded as &quot;Jack is hungry as a wolf&quot;. The new sentence is
+short yet deep, as opposed to the former which is longer and not as deep. You could think of &quot;wolf&quot; as a container of the many unreachable words in your head, that is, &quot;Jack is hungry
+as a [wolf]&quot; can be rephrased or expanded into &quot;Jack is hungry [{that he can, he is, etc.}-{all the qualities of a wolf}]&quot;, and this could end up being a several more sentences while a
+simile could&#x27;ve done a better job in just a sentence! A shortcoming of this construct though is that the meaning may vary to everyone; it depends on how a wolf looks like in their
+heads, that is, if they even know what a wolf is. That is true of most usage of figurative language.&lt;&#x2F;p&gt;
+&lt;p&gt;I would like to also add that the said shortcoming is most likely same one that Jesus took advantage of when he was teaching the people in parables, to divide his listeners and prevent
+just anyone from understanding them. The meaning of the parables varied across the people, and his disciplines were the only ones who understood them. Everyone else found them obscure.&lt;&#x2F;p&gt;
+&lt;p&gt;I think it&#x27;s reasonable to claim that the understanding of metaphors among people is never uniform, as people have uniquely different lived experienced and&#x2F;or socioeconomic conditions.
+But, I believe that whether this is a shortcoming, depends on the context. I may have implicitly bound it to usage within literature in my first paragraph, but they are evidently
+problematic in areas like politics, colloquial conversations, and academia. For example, in physics, it&#x27;s common to use analogies to approach complex ideas, like electricity to water.
+But, only temporarily. It&#x27;s agreed upon to be a great analogy, but they certainly don&#x27;t hold true anymore when you stretch them too far, and try to understand all electricity&#x27;s
+properties from the lens of the analogy. At this point, your brain tries its best to repack it within the confines of the analogy, but this even confuses you more, and you ultimately
+regret knowing the analogy in first place, as its perhaps the easiest&#x2F;fastest thought your brain recalls when it attempts to understand the real concept outside of its analogical form,
+and then you&#x27;re forced to confront the unfortunate reality with no analogies to help you. I think they are like training wheels; you don&#x27;t realize you can&#x27;t ride a bicycle until you
+take them off. However, their usage in areas like literature and so, is fine for the majority of people I believe—except for some with cognitive disabilities who may struggle to
+comprehend them. I can also imagine metaphors being used to gate keep information or to secretively communicate.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>My Haskell Notes</title>
+        <published>2024-10-26T00:00:00+00:00</published>
+        <updated>2024-10-26T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              bwkam
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://bwkam.github.io/blog/haskell-bs/"/>
+        <id>https://bwkam.github.io/blog/haskell-bs/</id>
+        
+        <content type="html" xml:base="https://bwkam.github.io/blog/haskell-bs/">&lt;h2 id=&quot;type-ambiguity-with-multi-type-param-typeclasses&quot;&gt;type ambiguity with multi type param typeclasses&lt;&#x2F;h2&gt;
+&lt;p&gt;when we introduce multiple params to typeclasses, haskell is more likely to raise &quot;ambiguity&quot; errors.
+consider the following example:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;hs&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-hs &quot;&gt;&lt;code class=&quot;language-hs&quot; data-lang=&quot;hs&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Foo &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;a b &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;where
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;get &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;:: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;a &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;-&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;b
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;instance Foo Int&lt;&#x2F;span&gt;&lt;span&gt; [&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;Int&lt;&#x2F;span&gt;&lt;span&gt;] &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;where
+&lt;&#x2F;span&gt;&lt;span&gt;  get x = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;[]
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;instance Foo Int String where
+&lt;&#x2F;span&gt;&lt;span&gt;  get x = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;[]
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;foo &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;::&lt;&#x2F;span&gt;&lt;span&gt; (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;Foo &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;a b&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;=&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;a &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;-&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;b
+&lt;&#x2F;span&gt;&lt;span&gt;foo a = get a
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;now if want to invoke call&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;hs&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-hs &quot;&gt;&lt;code class=&quot;language-hs&quot; data-lang=&quot;hs&quot;&gt;&lt;span&gt;foo &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;we get the following error:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;• Could not deduce ‘Foo a0 b’
+&lt;&#x2F;span&gt;&lt;span&gt;    from the context: (Foo a b, Num a)
+&lt;&#x2F;span&gt;&lt;span&gt;    bound by the inferred type for ‘it’:
+&lt;&#x2F;span&gt;&lt;span&gt;                forall {a} {b}. (Foo a b, Num a) =&amp;gt; b
+&lt;&#x2F;span&gt;&lt;span&gt;    at &amp;lt;interactive&amp;gt;:1:1-5
+&lt;&#x2F;span&gt;&lt;span&gt;    The type variable ‘a0’ is ambiguous
+&lt;&#x2F;span&gt;&lt;span&gt;    Potentially matching instances:
+&lt;&#x2F;span&gt;&lt;span&gt;    instance [safe] Foo Int [Int] -- Defined at app&#x2F;Main.hs:22:10
+&lt;&#x2F;span&gt;&lt;span&gt;    instance [safe] Foo String Int -- Defined at app&#x2F;Main.hs:25:10
+&lt;&#x2F;span&gt;&lt;span&gt;• In the ambiguity check for the inferred type for ‘it’
+&lt;&#x2F;span&gt;&lt;span&gt;    To defer the ambiguity check to use sites, enable AllowAmbiguousTypes
+&lt;&#x2F;span&gt;&lt;span&gt;    When checking the inferred type
+&lt;&#x2F;span&gt;&lt;span&gt;    it :: forall {a} {b}. (Foo a b, Num a) =&amp;gt; b
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;this happens because when you call &lt;code&gt;foo 2&lt;&#x2F;code&gt;, haskell tries to resolve &lt;code&gt;Foo a b&lt;&#x2F;code&gt;, which I believe happens before the function
+is actually evaluted, so it has solid types to operate on. so it sees &lt;code&gt;a&lt;&#x2F;code&gt; in &lt;code&gt;get :: a -&amp;gt; b&lt;&#x2F;code&gt;, and it knows its &lt;code&gt;Int&lt;&#x2F;code&gt; or
+something.
+nah dumbass! &lt;code&gt;a&lt;&#x2F;code&gt; is still not a solid type, haskell just puts a &lt;code&gt;Num&lt;&#x2F;code&gt; constraint on it, and that&#x27;s what it only knows. So both &lt;code&gt;a&lt;&#x2F;code&gt; and &lt;code&gt;b&lt;&#x2F;code&gt; are ambigious. let&#x27;s be more explicit here&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;hs&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-hs &quot;&gt;&lt;code class=&quot;language-hs&quot; data-lang=&quot;hs&quot;&gt;&lt;span&gt;foo (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2 &lt;&#x2F;span&gt;&lt;span&gt;:: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Int&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Then haskell looks for a &lt;code&gt;Foo Int b&lt;&#x2F;code&gt; instance, do we have one? No. So haskell is confused about which instance of
+&lt;code&gt;Foo a b&lt;&#x2F;code&gt; you actually want to use, which the error message helpfully provides for you. To fix such an error, you have to be
+more explicit about the type. i.e&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;hs&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-hs &quot;&gt;&lt;code class=&quot;language-hs&quot; data-lang=&quot;hs&quot;&gt;&lt;span&gt;(foo (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2 &lt;&#x2F;span&gt;&lt;span&gt;:: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Int&lt;&#x2F;span&gt;&lt;span&gt;) :: [&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Int&lt;&#x2F;span&gt;&lt;span&gt;])
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;tada, now haskell knows that you meant the &lt;code&gt;Foo Int [Int]&lt;&#x2F;code&gt; instance&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;functional-deps&quot;&gt;functional deps&lt;&#x2F;h2&gt;
+&lt;p&gt;with the multi type param extensions, you sometimes want one type to decide the other. e.g&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;hs&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-hs &quot;&gt;&lt;code class=&quot;language-hs&quot; data-lang=&quot;hs&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Foo &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;a b &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;where
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;get &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;:: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;a &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;-&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;b
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;this means we can do stuff like&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;hs&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-hs &quot;&gt;&lt;code class=&quot;language-hs&quot; data-lang=&quot;hs&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;instance Foo Int M
+&lt;&#x2F;span&gt;&lt;span&gt;  ... 
+&lt;&#x2F;span&gt;&lt;span&gt;  
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;instance Foo String M
+&lt;&#x2F;span&gt;&lt;span&gt;  ...
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;this is fine, but sometimes it isn&#x27;t desirable. we don&#x27;t want multiple &lt;code&gt;b&lt;&#x2F;code&gt;s for one &lt;code&gt;a&lt;&#x2F;code&gt;. we only want 1:1
+so how do we communicate this to haskell? functional deps.
+(enable the ext)&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;hs&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-hs &quot;&gt;&lt;code class=&quot;language-hs&quot; data-lang=&quot;hs&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Foo &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;a b&lt;&#x2F;span&gt;&lt;span&gt; | &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span&gt; -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;b &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;where
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;get &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;:: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;a &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;-&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;b
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;that&#x27;s it, now if you try the snippet earlier, haskell would complain, you would have to only keep one of them.
+think if &lt;code&gt;b&lt;&#x2F;code&gt; is some certain certain, it doesn&#x27;t make sense for a state to be associated with different types.&lt;&#x2F;p&gt;
+&lt;p&gt;now let&#x27;s see a more complicated example. the &lt;code&gt;megaparsec&lt;&#x2F;code&gt; library provides a function called &lt;code&gt;single&lt;&#x2F;code&gt;, it&#x27;s type signature is:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;hs&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-hs &quot;&gt;&lt;code class=&quot;language-hs&quot; data-lang=&quot;hs&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;single &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;:: MonadParsec &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;e s m &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;=&amp;gt; Token &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;s &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;-&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;m&lt;&#x2F;span&gt;&lt;span&gt; (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;Token &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;s&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;roughly, this means that &lt;code&gt;e&lt;&#x2F;code&gt; &lt;code&gt;s&lt;&#x2F;code&gt; and &lt;code&gt;m&lt;&#x2F;code&gt; are related through &lt;code&gt;MonadParsec&lt;&#x2F;code&gt;. that&#x27;s the signature of the class&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;hs&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-hs &quot;&gt;&lt;code class=&quot;language-hs&quot; data-lang=&quot;hs&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span&gt; (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Stream &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;s&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;MonadPlus &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;m&lt;&#x2F;span&gt;&lt;span&gt;) =&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;MonadParsec &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;e s m&lt;&#x2F;span&gt;&lt;span&gt; | &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;m&lt;&#x2F;span&gt;&lt;span&gt; -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;e s &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;where 
+&lt;&#x2F;span&gt;&lt;span&gt;   ...
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;you see there is a functional dep, which says &quot;m determines e and s&quot;. yes so that means we only need to tell it about &lt;code&gt;m&lt;&#x2F;code&gt;, it will take care of &lt;code&gt;e&lt;&#x2F;code&gt; and &lt;code&gt;s&lt;&#x2F;code&gt;
+if we try evaluate &lt;code&gt;single &#x27;\n&#x27;&lt;&#x2F;code&gt;, we would get an ambiguity error, because we don&#x27;t know &lt;code&gt;m&lt;&#x2F;code&gt;, so we don&#x27;t know &lt;code&gt;s&lt;&#x2F;code&gt; which is the first argument of &lt;code&gt;single&lt;&#x2F;code&gt;.
+it tries to match &lt;code&gt;Char&lt;&#x2F;code&gt; (what we gave it) against what it knows i.e &lt;code&gt;Token s&lt;&#x2F;code&gt;. Nothing it can do abaout it. let&#x27;s help it out and give it an explicit type&lt;&#x2F;p&gt;
+&lt;p&gt;note: it knows &lt;code&gt;Token s ~ Char&lt;&#x2F;code&gt;, but nothing about &lt;code&gt;s&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;hs&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-hs &quot;&gt;&lt;code class=&quot;language-hs&quot; data-lang=&quot;hs&quot;&gt;&lt;span&gt;(single &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;) :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Parsec Void String Char
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;so because we know &lt;code&gt;Token s ~ Char&lt;&#x2F;code&gt; (hint from &#x27;\n&#x27;), we observe how haskell matches the types&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;hs&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-hs &quot;&gt;&lt;code class=&quot;language-hs&quot; data-lang=&quot;hs&quot;&gt;&lt;span&gt;m &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Char
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Parsec Void String Char
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;it sees that the &lt;code&gt;Char&lt;&#x2F;code&gt; is constant in both sides, so it attempts to match &lt;code&gt;m&lt;&#x2F;code&gt; with &lt;code&gt;Parsec Void String&lt;&#x2F;code&gt;, and it should work out.
+now we know &lt;code&gt;m ~ Parsec Void String&lt;&#x2F;code&gt;, remember when I said that&#x27;s what we only need? yes, so because of the functional dependency, you can rest assured that
+there is only one instance of &lt;code&gt;MonadParsec&lt;&#x2F;code&gt; where &lt;code&gt;m ~ Parsec Void String&lt;&#x2F;code&gt;, which means there are only one &lt;code&gt;s&lt;&#x2F;code&gt; and &lt;code&gt;e&lt;&#x2F;code&gt; that can fit in here, and those are
+the &lt;code&gt;Void&lt;&#x2F;code&gt; and &lt;code&gt;String&lt;&#x2F;code&gt;. So, ultimately haskell knows that we need the &lt;code&gt;MonadParsec Void String (ParsecT Void String Identity)&lt;&#x2F;code&gt;. And if we hoogle it up:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;hs&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-hs &quot;&gt;&lt;code class=&quot;language-hs&quot; data-lang=&quot;hs&quot;&gt;&lt;span&gt; (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Ord&lt;&#x2F;span&gt;&lt;span&gt; e, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Stream&lt;&#x2F;span&gt;&lt;span&gt; s) =&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;MonadParsec&lt;&#x2F;span&gt;&lt;span&gt; e s (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ParsecT&lt;&#x2F;span&gt;&lt;span&gt; e s m)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;we can see that there is indeed an instance with the types we employed.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>
