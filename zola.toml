@@ -1,0 +1,33 @@
+# The URL the site will be built for
+base_url = "https://inputusername.github.io/zola-hook/"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+
+title = "bwkam's hut"
+description = "Hook is a theme for Zola"
+
+taxonomies = [
+    { name = "categories" },
+    { name = "tags" },
+]
+
+[markdown]
+
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+# highlight_code = true
+# highlight_theme = "gruvbox-dark"
+
+bottom_footnotes = true
+
+[extra]
+# Put all your custom variables here
+
+links = [
+    { title = "mail", href = "mailto:beshoykamel391@gmail.com" },
+    { title = "github", href = "https://github.com/bwkam" },
+]
