@@ -1,3 +1,10 @@
 {% component katex(block = false) -%}
 <script type="math/tex{% if block %};mode=display{% endif %}">{{ body | trim | safe }}</script>
 {%- endcomponent katex %}
+
+{% component img(src: string) %}
+<img
+    class=""
+    src={{ src }}
+    />
+{% endcomponent img %}
