@@ -6,4 +6,3 @@ taxonomies.categories = ["intro"]
 
 # Hello world!
 
-{% <katex> %}\KaTeX{% </katex> %}
